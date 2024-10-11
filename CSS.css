@@ -2,13 +2,40 @@ body {
     font-family: sans-serif;
 }
 
-#chartContainer {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
+.container {
+    max-width: 1200px;
 }
 
-/* Outros estilos */
-.text-danger {
-    color: red !important; /* Importante para sobrescrever estilos do Bootstrap */
+.card {
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-medio {
+    font-weight: bold;
+    color: #007bff; /* Azul do Bootstrap */
+}
+
+/* Estilos para o gráfico */
+#chartContainer {
+    width: 100%;
+    height: 400px;
+}
+
+/* Cores de fundo alternadas para cards */
+.bg-light:nth-child(even) {
+    background-color: #f8f9fa!important; /* Cinza claro do Bootstrap */
+}
+
+/* Mais espaçamento nos cards */
+.card-body {
+    padding: 2rem!important; /* Ajuste o valor conforme necessário */
+}
+
+.card-title, .card-subtitle {
+    margin-bottom: 1.5rem!important; /* Ajuste o valor conforme necessário */
+}
+
+.input-group {
+    margin-bottom: 1.5rem!important; /* Ajuste o valor conforme necessário */
 }
