@@ -1,69 +1,90 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orçamento Conferência Raízes</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoowMBEnmCUVdOsfM1PjfapGMDU3qrYV$KbRwkdkp5RVKTpCBRdn0blrF3E==g" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOdPxuCF+mljCF5oisGYnAUhe5rgVaqgRLojZYA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="container">
-        <h1 class="text-center mt-4 mb-4">
-            <i class="fas fa-chart-pie"></i> Orçamento Conferência Raízes 
+    <div class="container my-5">
+        <h1 class="text-center mb-5 display-4">
+            <i class="fas fa-tree text-success"></i> Orçamento Conferência Raízes
         </h1>
 
         <div class="row">
-            <div class="col-md-6">
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header bg-primary text-white">
-                        <i class="fas fa-users"></i> Participantes
-                    </div>
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <label for="numParticipantesGeral" class="form-label">Número de Participantes:</label>
-                            <input type="number" class="form-control" id="numParticipantesGeral" value="0">
-                        </div>
+            <div class="col-md-12 mb-4">
+                <div class="card shadow">
+                    <div class="card-body bg-light py-4">
+                        <h5 class="card-title">
+                            <i class="fas fa-users me-2"></i> Número de Participantes:
+                        </h5>
+                        <input type="number" class="form-control" id="numParticipantesGeral" value="0">
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header bg-secondary text-white">
-                        <i class="fas fa-dollar-sign"></i> Custos do Evento
-                    </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card shadow mb-4">
                     <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-money-bill-wave me-2"></i> Custos do Evento
+                        </h5>
                         <table class="table table-striped" id="custosTable">
                             <thead>
                                 <tr>
                                     <th>Descrição</th>
                                     <th>Categoria</th>
-                                    <th>Qtd/Unidades</th>
-                                    <th>Valor Unitário</th>
-                                    <th>Valor Total</th>
+                                    <th>Quantidade/Unidades</th>
+                                    <th>Valor Unitário (R$)</th>
+                                    <th>Valor Total (R$)</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
                         </table>
 
-                        <div class="mt-3">
-                            <button class="btn btn-success btn-sm" onclick="adicionarCusto()">
-                                <i class="fas fa-plus"></i> Adicionar Custo
-                            </button>
+                        <div class="mt-4">
+                            <h6 class="card-subtitle mb-3 text-muted">
+                                <i class="fas fa-plus-circle me-2"></i> Adicionar Custo
+                            </h6>
+                            <div class="input-group mb-3">
+                                <input type="text" id="novaDescricao" class="form-control" placeholder="Descrição">
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="text" id="novaCategoria" class="form-control"
+                                    placeholder="Categoria (opcional)">
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="number" id="novaQuantidade" class="form-control"
+                                    placeholder="Quantidade/Unidades" value="1">
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="number" id="novoValorUnitario" class="form-control"
+                                    placeholder="Valor Unitário (R$)">
+                            </div>
+                            <button class="btn btn-primary" onclick="adicionarCusto()">Adicionar</button>
                         </div>
 
-                        <div class="mt-3">
-                            <strong>Custo Total: <span id="custoTotal">R$ 0,00</span></strong>
+                        <div class="mt-4">
+                            <strong>Custo Total: <span id="custoTotal" class="text-danger">R$ 0,00</span></strong>
                         </div>
                     </div>
                 </div>
 
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header bg-info text-white">
-                        <i class="fas fa-bus"></i> Detalhes de Transporte
-                    </div>
-                    <div class="card-body">
+                <div class="card shadow mb-4">
+                    <div class="card-body bg-light py-4">
+                        <h5 class="card-title">
+                            <i class="fas fa-bus me-2"></i> Detalhes de Transporte
+                        </h5>
                         <div class="mb-3">
                             <label for="numPassageiros" class="form-label">Número de Passageiros:</label>
                             <input type="number" class="form-control" id="numPassageiros">
@@ -76,20 +97,19 @@
                             <label for="custoPorVeiculo" class="form-label">Custo por Veículo (R$):</label>
                             <input type="number" class="form-control" id="custoPorVeiculo">
                         </div>
-                        <button class="btn btn-primary btn-sm" onclick="calcularTransporte()">
-                            <i class="fas fa-calculator"></i> Calcular Transporte
-                        </button>
+                        <button class="btn btn-info" onclick="calcularTransporte()">Calcular Transporte</button>
                         <div class="mt-3">
-                            <strong>Custo Total de Transporte: <span id="custoTransporte">R$ 0,00</span></strong><br>
+                            <strong>Custo Total de Transporte: <span id="custoTransporte"
+                                    class="text-primary">R$ 0,00</span></strong><br>
                         </div>
                     </div>
                 </div>
 
-                <div class="card shadow-sm">
-                    <div class="card-header bg-warning text-white">
-                        <i class="fas fa-utensils"></i> Detalhes de Alimentação
-                    </div>
-                    <div class="card-body">
+                <div class="card shadow mb-4">
+                    <div class="card-body py-4">
+                        <h5 class="card-title">
+                            <i class="fas fa-utensils me-2"></i> Detalhes de Alimentação
+                        </h5>
                         <div class="mb-3">
                             <label for="custoAlmoco" class="form-label">Custo de Almoço por Pessoa (R$):</label>
                             <input type="number" class="form-control" id="custoAlmoco" value="0">
@@ -102,23 +122,22 @@
                             <label for="custoLanche" class="form-label">Custo do Lanche por Pessoa(R$):</label>
                             <input type="number" class="form-control" id="custoLanche" value="0">
                         </div>
-                        <button class="btn btn-primary btn-sm" onclick="calcularAlimentacao()">
-                            <i class="fas fa-calculator"></i> Calcular Alimentação
-                        </button>
+                        <button class="btn btn-info" onclick="calcularAlimentacao()">Calcular Alimentação</button>
                         <div class="mt-3">
-                            <strong>Custo Total de Alimentação: <span id="custoAlimentacao">R$ 0,00</span></strong>
+                            <strong>Custo Total de Alimentação: <span id="custoAlimentacao"
+                                    class="text-primary">R$ 0,00</span></strong>
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
 
             <div class="col-md-6">
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header bg-success text-white">
-                        <i class="fas fa-file-invoice-dollar"></i> Resumo Financeiro
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-striped" id="resumoTable">
+                <div class="card shadow mb-4">
+                    <div class="card-body bg-light py-4">
+                        <h5 class="card-title">
+                            <i class="fas fa-chart-pie me-2"></i> Resumo Financeiro
+                        </h5>
+                        <table class="table table-striped mt-4" id="resumoTable">
                             <thead>
                                 <tr>
                                     <th>Item</th>
@@ -128,19 +147,19 @@
                             <tbody>
                                 <tr>
                                     <td>Total de Custos</td>
-                                    <td id="resumoCustos">R$ 0,00</td>
+                                    <td id="resumoCustos" class="text-danger">R$ 0,00</td>
                                 </tr>
                                 <tr>
                                     <td>Total de Receitas</td>
-                                    <td id="resumoReceitas">R$ 0,00</td>
+                                    <td id="resumoReceitas" class="text-success">R$ 0,00</td>
                                 </tr>
                                 <tr>
                                     <td>Lucro</td>
-                                    <td id="resumoLucro">R$ 0,00</td>
+                                    <td id="resumoLucro" class="text-success">R$ 0,00</td>
                                 </tr>
                                 <tr>
                                     <td>Prejuízo</td>
-                                    <td id="resumoPrejuizo">R$ 0,00</td>
+                                    <td id="resumoPrejuizo" class="text-danger">R$ 0,00</td>
                                 </tr>
                                 <tr>
                                     <td>Valor da Inscrição</td>
@@ -159,63 +178,40 @@
                     </div>
                 </div>
 
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header bg-dark text-white">
-                        <i class="fas fa-hand-holding-usd"></i> Receitas
-                    </div>
-                    <div class="card-body">
+                <div class="card shadow mb-4">
+                    <div class="card-body py-4">
+                        <h5 class="card-title">
+                            <i class="fas fa-dollar-sign me-2"></i> Receitas
+                        </h5>
                         <div class="mb-3">
                             <label for="valorInscricao" class="form-label">Valor da Inscrição (R$):</label>
                             <input type="number" class="form-control" id="valorInscricao" value="0">
                         </div>
                         <div class="mb-3">
-                            <label for="outrasReceitas" class="form-label">Outras Receitas (R$):</label> 
+                            <label for="outrasReceitas" class="form-label">Outras Receitas (R$):</label>
                             <input type="number" class="form-control" id="outrasReceitas" value="0">
-                        </div> 
-                        <button class="btn btn-success btn-sm" onclick="calcularTotalReceitas()">
-                            <i class="fas fa-calculator"></i> Calcular
-                        </button>
+                        </div>
+                        <button class="btn btn-success" onclick="calcularTotalReceitas()">Calcular</button>
                     </div>
                 </div>
 
-                <div class="card shadow-sm">
-                    <div class="card-header bg-primary text-white">
-                        <i class="fas fa-chart-pie"></i> Gráfico de Custos
-                    </div>
-                    <div class="card-body">
+                <div class="card shadow mb-4">
+                    <div class="card-body bg-light py-4">
+                        <h5 class="card-title">
+                            <i class="fas fa-chart-bar me-2"></i> Gráfico de Custos
+                        </h5>
                         <div id="chartContainer">
-                            <canvas id="myChart"></canvas> 
+                            <canvas id="myChart"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Modal para adicionar custo -->
-        <div class="modal fade" id="custoModal" tabindex="-1" aria-labelledby="custoModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="custoModalLabel">Adicionar Custo</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <input type="text" id="novaDescricao" class="form-control mb-2" placeholder="Descrição">
-                        <input type="text" id="novaCategoria" class="form-control mb-2" placeholder="Categoria (ou deixe em branco)">
-                        <input type="number" id="novaQuantidade" class="form-control mb-2" placeholder="Quantidade/Unidades" value="1">
-                        <input type="number" id="novoValorUnitario" class="form-control mb-2" placeholder="Valor Unitário (R$)">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" onclick="adicionarCustoModal()">Salvar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="JS.js"></script>
 </body>
+
 </html>
